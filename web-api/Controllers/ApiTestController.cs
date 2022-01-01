@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq; 
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace APITest.Controllers
 {
@@ -20,7 +21,12 @@ namespace APITest.Controllers
             int input = 5;
             int result = input + 2;
 
-            return Ok($"The default value calculated by the API is: " + result);
+            Result res = new Result(result);
+
+            //string jsonOutput = JsonConvert.SerializeObject(res, Formatting.Indented);
+            string jsonOutput = JsonConvert.SerializeObject(res);
+
+            return Ok(jsonOutput);
         }
 
         //[HttpGet("GetResult")]                                 //Routing Endpunkt .../getall
@@ -37,17 +43,22 @@ namespace APITest.Controllers
         {
             int result = input.Value + 2;
 
-            return Ok($"You sent a value of {input.Value} to the API. The API calculated a result of: " + result);
+            string jsonOutput = JsonConvert.SerializeObject(result);
+
+            return Ok(jsonOutput);
         }
 
         [HttpPost("GetCircleArea")]                                 //Routing Endpunkt .../getall
         public IActionResult GetCircleArea(Input input)
-        {
+        { 
+        
             Circle circle = new Circle(input.Value);
 
             double result = circle.Circumference;
 
-            return Ok($"You sent a value of {input.Value} to the API. The API calculated a result of: " + result);
+            string jsonOutput = JsonConvert.SerializeObject(result);
+
+            return Ok(jsonOutput);
         }
 
 

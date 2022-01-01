@@ -5,8 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="RhinoCommon">
-      <HintPath>..\..\..\..\..\Program Files\Rhino 6\System\RhinoCommon.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\..\..\..\Program Files\Rhino 6\System\RhinoCommon.dll</HintPath>
     </Reference>
   </ItemGroup>
 
